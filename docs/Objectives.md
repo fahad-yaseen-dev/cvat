@@ -1,15 +1,15 @@
-# Objectives and measurements
+# Objectives
 
-This objective is set before implementation and before timing the endpoint. CVAT base commit: `4a09e27ff869b7aebbfdb07b29c4a34904a0221d`. Machine CPU, physical RAM, operating system, number of COCO 2017 validation images, task ID, and final implementation commit: **to be recorded from the actual run**.
+I set this target before writing the endpoint or timing it. The code starts from CVAT commit `4a09e27ff869b7aebbfdb07b29c4a34904a0221d`.
 
-| ID | Field | Entry |
+| ID | Field | Decision |
 | --- | --- | --- |
-| MO-1 | What is measured | HTTP response time for one authenticated GET of the task's per-class annotation-count endpoint, including server processing and transfer to the local client. |
-| MO-1 | How | Run five sequential requests to the same populated COCO validation task using the same signed-in user and a local command-line client. Record the tool's raw time for each complete HTTP request in seconds, along with status code, then calculate the median and range (maximum minus minimum). Confirm the responses have the expected counts. |
-| MO-1 | Target | Median of five warm requests at or below **500 ms**. This is a useful target for a graph that should feel responsive when opened locally, while still requiring a measured database aggregation. |
-| MO-1 | Conditions | Local Docker Compose stack, documented task/image count, same machine and account, no concurrent import or deliberate load. Run one warm-up request before the five measured requests. |
-| MO-1 | Not included | First request after a cold server start, browser rendering time, other task sizes, and network access from a different machine. |
+| MO-1 | What I will measure | Total HTTP time for a successful, authenticated request to the per-class counts endpoint for one task. This includes local client-to-server transfer and the database query. |
+| MO-1 | Method | Use the same user and COCO validation task for five sequential requests. After one warm-up request, save each command's raw HTTP status and total time. Sort the five times; report the middle value as the median and `maximum - minimum` as the spread. Check that all five responses contain the expected counts. |
+| MO-1 | Target | Median at or below **500 ms**. The graph should load promptly on the same machine as the server; half a second is a useful local target without assuming that a database aggregation will be free. I will keep this target even if I miss it. |
+| MO-1 | Conditions | Local Docker Compose, no import running during measurement, one signed-in user, the same task and number of imported images for every run. |
+| MO-1 | Excluded | Cold start, browser drawing time, remote network latency and task sizes other than the one tested. |
 
-## Actual run
+## Measurement record
 
-Pending implementation and sample-data import. Paste **all five raw tool outputs** here; do not infer or invent results. Record the exact command, timestamp, machine details, task ID, observed median and range, and whether the target was met. If it is missed, explain the observed bottleneck or limitation without changing the original target.
+To fill in after running the endpoint: exact command and timestamp; CPU, physical RAM and OS; Docker allocation if relevant; task ID and imported image count; implementation commit; five unedited outputs; median, spread and result against the target. If the target is missed, I will record what I observed rather than change the target.

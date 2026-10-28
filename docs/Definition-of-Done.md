@@ -1,21 +1,20 @@
 # Definition of Done
 
-This checklist is written before feature code. Tick an item only after adding a concrete number, command output, test result, screenshot link, commit, or recording timestamp beside it. Leave unfinished work unchecked and explain why at the end.
+I wrote these checks before feature code. A checked box needs a number, a command result, a test result or a link beside it. I will leave anything I cannot demonstrate unchecked and explain it below.
 
-- [ ] A COCO 2017 validation task opens with visible labelled boxes. Evidence: task ID, imported image count, and screenshot/link pending.
-- [ ] Task-scoped API returns correct database-backed counts per class. Evidence: known expected counts and API response pending.
-- [ ] CVAT web page calls the API and renders a readable graph. Evidence: live screenshot or Loom timestamp pending.
-- [ ] Page handles zero annotations and a failed API request separately and clearly. Evidence: both demonstrations pending.
-- [ ] Anonymous user and signed-in user without task access are refused by the endpoint. Evidence: both request status codes and responses pending.
-- [ ] Endpoint speed target measured in five runs. Evidence: raw output, median, range, target outcome, and machine/commit details in `docs/Objectives.md` pending.
-- [ ] One additional filter or grouping works, with its reason recorded. Evidence pending; leave unchecked if time runs out.
-- [ ] WebSocket updates the graph after annotation changes. Evidence pending; initially skipped in the Plan.
-- [ ] Page reconnects and recovers after a dropped WebSocket connection. Evidence pending; initially skipped in the Plan.
-- [ ] If item 10 is reached, the Plan contains chosen/rejected approaches and the cost of the rejection. Evidence pending.
-- [ ] Git history shows a documentation-only first commit, subsequent contained commits, and all three required files under `docs/`. Evidence: first commit `60957dd`; final history pending.
-- [ ] Loom is at most five minutes, shows the running feature and request path, and answers K1–K4 accurately without reading notes. Evidence: recording link and duration pending.
-- [ ] PR is from `dev-test01` into `main` on `fahad-yaseen-dev/cvat`; submission includes that PR and Loom links. Evidence pending.
+- [ ] COCO 2017 validation data is visible in a CVAT job with labelled boxes. Task ID, image count and evidence: ___
+- [ ] The endpoint reads this task's stored annotations and returns counts by class that match an independently checked example. Expected versus actual: ___
+- [ ] The CVAT page calls the endpoint and shows the counts as a graph. Screenshot or Loom time: ___
+- [ ] An empty task shows an empty state; a failed request shows an error state. Evidence for both: ___
+- [ ] The endpoint refuses an anonymous request and a signed-in user without access to this task. Request results: ___
+- [ ] MO-1 has five raw timings, a median, a spread and a clear pass or miss. See Objectives; result: ___
+- [ ] The extra filter or grouping works, and its purpose is explained. Evidence or reason unfinished: ___
+- [ ] The graph updates through WebSocket and recovers after a disconnect, if attempted. Evidence or reason unfinished: ___
+- [ ] The Plan has a decision record if item 10 is reached. Evidence or reason unfinished: ___
+- [ ] The Git history has a Plan-only first commit, later incremental commits and exactly the three required documents in `docs/`. First commit: `60957dd`; final check: ___
+- [ ] The Loom is no longer than five minutes, demonstrates the feature, follows one request through the code and answers K1–K4 from the submitted implementation without reading notes. Link, duration and code check: ___
+- [ ] The PR goes from `dev-test01` to `main` within my own fork; the reply includes the PR and Loom links. Links: ___
 
-## Unfinished work and reasons
+## Unfinished work
 
-To be completed at the end. An unchecked item is not a claim of completion.
+Complete this section at the end with each unchecked item and why it was not reached.
