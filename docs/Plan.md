@@ -1,6 +1,6 @@
 # Annotation analytics plan
 
-Base CVAT commit: `4a09e27ff869b7aebbfdb07b29c4a34904a0221d` (fork `develop`). Working branch: `dev-test01`. The goal is a task page that displays database-backed annotation counts by class and can be demonstrated on imported COCO 2017 validation data. Work time budget: 8 hours, excluding unattended image downloads and dataset import as specified in the assessment.
+Base CVAT commit: `4a09e27ff869b7aebbfdb07b29c4a34904a0221d` (fork `develop`). Working branch: `dev-test01`. The goal is a task page that displays database-backed annotation counts by class and can be demonstrated on imported COCO 2017 validation data. Work time budget: 8 hours. Only the unattended Docker image pull and dataset import waits are excluded, as specified in the assessment.
 
 | Order | Work | Budget |
 | --- | --- | ---: |
