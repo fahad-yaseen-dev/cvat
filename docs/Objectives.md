@@ -1,15 +1,15 @@
 # Objectives
 
-I set this target before writing the endpoint or timing it. The code starts from CVAT commit `4a09e27ff869b7aebbfdb07b29c4a34904a0221d`.
+CVAT base commit: `4a09e27ff869b7aebbfdb07b29c4a34904a0221d`. I set this target before writing the API.
 
-| ID | Field | Decision |
+| ID | Field | Value |
 | --- | --- | --- |
-| MO-1 | What I will measure | Total HTTP time for a successful, authenticated request to the per-class counts endpoint for one task. This includes local client-to-server transfer and the database query. |
-| MO-1 | Method | Use the same user and COCO validation task for five sequential requests. After one warm-up request, save each command's raw HTTP status and total time. Sort the five times; report the middle value as the median and `maximum - minimum` as the spread. Check that all five responses contain the expected counts. |
-| MO-1 | Target | Median at or below **500 ms**. The graph should load promptly on the same machine as the server; half a second is a useful local target without assuming that a database aggregation will be free. I will keep this target even if I miss it. |
-| MO-1 | Conditions | Local Docker Compose, no import running during measurement, one signed-in user, the same task and number of imported images for every run. |
-| MO-1 | Excluded | Cold start, browser drawing time, remote network latency and task sizes other than the one tested. |
+| MO-1 | Measure | Total HTTP time for an authenticated GET of one task's class-count API. |
+| MO-1 | Method | One warm-up, then five sequential requests for the same COCO task. Save each raw status and time; report the median and range (`max - min`). |
+| MO-1 | Target | Median ≤ 500 ms. A local graph should receive its counts within half a second. |
+| MO-1 | Conditions | Local Docker stack, same user and task, no import running. Record task ID and image count. |
+| MO-1 | Excluded | Cold start, browser rendering, remote network, other task sizes. |
 
-## Measurement record
+## Results
 
-To fill in after running the endpoint: exact command and timestamp; CPU, physical RAM and OS; Docker allocation if relevant; task ID and imported image count; implementation commit; five unedited outputs; median, spread and result against the target. If the target is missed, I will record what I observed rather than change the target.
+Pending. Add the exact command, five raw outputs, median, range, pass/miss, CPU, RAM, OS, task ID, image count and tested commit. Explain a miss without changing the target.

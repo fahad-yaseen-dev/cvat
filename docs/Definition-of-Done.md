@@ -1,20 +1,20 @@
 # Definition of Done
 
-I wrote these checks before feature code. A checked box needs a number, a command result, a test result or a link beside it. I will leave anything I cannot demonstrate unchecked and explain it below.
+Written before feature code. I will tick a box only with evidence beside it.
 
-- [ ] COCO 2017 validation data is visible in a CVAT job with labelled boxes. Task ID, image count and evidence: ___
-- [ ] The endpoint reads this task's stored annotations and returns counts by class that match an independently checked example. Expected versus actual: ___
-- [ ] The CVAT page calls the endpoint and shows the counts as a graph. Screenshot or Loom time: ___
-- [ ] An empty task shows an empty state; a failed request shows an error state. Evidence for both: ___
-- [ ] The endpoint refuses an anonymous request and a signed-in user without access to this task. Request results: ___
-- [ ] MO-1 has five raw timings, a median, a spread and a clear pass or miss. See Objectives; result: ___
-- [ ] The extra filter or grouping works, and its purpose is explained. Evidence or reason unfinished: ___
-- [ ] The graph updates through WebSocket and recovers after a disconnect, if attempted. Evidence or reason unfinished: ___
-- [ ] The Plan has a decision record if item 10 is reached. Evidence or reason unfinished: ___
-- [ ] The Git history has a Plan-only first commit, later incremental commits and exactly the three required documents in `docs/`. First commit: `60957dd`; final check: ___
-- [ ] The Loom is no longer than five minutes, demonstrates the feature, follows one request through the code and answers K1–K4 from the submitted implementation without reading notes. Link, duration and code check: ___
-- [ ] The PR goes from `dev-test01` to `main` within my own fork; the reply includes the PR and Loom links. Links: ___
+- [ ] COCO validation task opens with labelled boxes. Task ID, image count, evidence: ___
+- [ ] API counts match a known task. Expected and actual counts: ___
+- [ ] CVAT page calls the API and shows a graph. Screenshot or Loom time: ___
+- [ ] Empty task and failed request show separate states. Evidence: ___
+- [ ] Anonymous and unauthorized users are refused. Request results: ___
+- [ ] Five API timings, raw output, median and range recorded in Objectives. Target met or missed: ___
+- [ ] Extra filter/grouping works and its reason is stated. Evidence or reason unfinished: ___
+- [ ] WebSocket update and reconnect work, if attempted. Evidence or reason unfinished: ___
+- [ ] Decision record added to Plan, if item 10 is reached. Evidence or reason unfinished: ___
+- [ ] Three docs are under `docs/`; Git shows the Plan-only first commit (`60957dd`) and later incremental commits. Final check: ___
+- [ ] Loom is ≤ 5 minutes and covers the live feature, request path and accurate answers to K1–K4 without reading notes. Link and duration: ___
+- [ ] PR targets `main` on my fork, from `dev-test01`. PR and Loom links sent: ___
 
 ## Unfinished work
 
-Complete this section at the end with each unchecked item and why it was not reached.
+List each unchecked item and why it stopped before submission.
