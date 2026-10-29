@@ -2,3 +2,8 @@ services:
   cvat_server:
     volumes:
       - ./cvat:/opt/cvat/cvat:ro
+  cvat_ui:
+    image: cvat/ui:assessment
+    build:
+      context: .
+      dockerfile: Dockerfile.ui

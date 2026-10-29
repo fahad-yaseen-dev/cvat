@@ -102,6 +102,45 @@
     margin-top: $grid-unit-size * 2;
 }
 
+.cvat-task-annotation-counts {
+    margin-top: $grid-unit-size * 2;
+    padding: 20px;
+    border: 1px solid $border-color-1;
+    border-radius: $border-radius-base;
+    background: $background-color-1;
+
+    .cvat-task-annotation-counts-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h2 { margin: 0; font-size: 20px; }
+    }
+
+    .cvat-task-annotation-counts-chart {
+        max-height: 360px;
+        overflow-y: auto;
+    }
+
+    .cvat-task-annotation-counts-row {
+        display: grid;
+        grid-template-columns: minmax(110px, 150px) 1fr 55px;
+        gap: 12px;
+        align-items: center;
+        margin: 6px 0;
+
+        > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        > strong { text-align: right; }
+    }
+
+    .cvat-task-annotation-counts-track {
+        height: 14px;
+        background: $background-color-2;
+
+        > div { height: 100%; background: #1890ff; }
+    }
+}
+
 .cvat-task-top-bar {
     margin: $grid-unit-size * 2 0;
 }

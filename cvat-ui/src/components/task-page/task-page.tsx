@@ -28,6 +28,7 @@ import { updateTaskAsync, updateTaskMetadataAsync } from 'actions/tasks-actions'
 import TopBarComponent from './top-bar';
 import DetailsComponent from './details';
 import { getCloudStorageById } from './cloud-storage-editor';
+import AnnotationCounts from './annotation-counts';
 
 const core = getCore();
 
@@ -151,6 +152,7 @@ function TaskPageComponent(): JSX.Element {
                         onUpdateTaskMeta={onUpdateTaskMeta}
                         labelsEditorProps={labelsEditorProps}
                     />
+                    <AnnotationCounts taskID={id} />
                     <JobListComponent task={taskInstance} onJobUpdate={onJobUpdate} />
                 </Col>
             </Row>
