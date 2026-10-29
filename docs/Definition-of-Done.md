@@ -7,7 +7,7 @@ Written before feature code. I will tick a box only with evidence beside it.
 - [x] CVAT page calls the API and shows a graph. Task 1 screenshot checked on 29 Oct: 3,953 shapes across 78 labels.
 - [ ] Empty task and failed request show separate states. Empty API response checked: HTTP 200, `total: 0`, `counts: []`; UI empty and error states still need browser checks.
 - [x] Anonymous and unauthorized users are refused. Live requests: anonymous 401, unrelated user 403, admin 200. The temporary user was removed.
-- [ ] Five API timings, raw output, median and range recorded in Objectives. Target met or missed: ___
+- [x] Five API timings, raw output, median and range recorded in Objectives. Median 79.416 ms; 500 ms target met on task 1.
 - [ ] Extra filter/grouping works and its reason is stated. Evidence or reason unfinished: ___
 - [ ] WebSocket update and reconnect work, if attempted. Evidence or reason unfinished: ___
 - [ ] Decision record added to Plan, if item 10 is reached. Evidence or reason unfinished: ___
