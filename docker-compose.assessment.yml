@@ -1,0 +1,4 @@
+services:
+  cvat_server:
+    volumes:
+      - ./cvat:/opt/cvat/cvat:ro
