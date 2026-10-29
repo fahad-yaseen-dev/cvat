@@ -18,12 +18,16 @@ class TaskAnnotationCountsView(APIView):
         if not TaskPermission.create_scope_view(request, task).check_access().allow:
             raise PermissionDenied("You do not have access to this task.")
 
+        label_filter = request.query_params.get("label", "").strip()[:80]
         # One row represents one stored shape. Exclude ground-truth and replica jobs.
+        shapes = LabeledShape.objects.filter(
+            job__segment__task=task,
+            job__type=JobType.ANNOTATION,
+        )
+        if label_filter:
+            shapes = shapes.filter(label__name__icontains=label_filter)
         rows = (
-            LabeledShape.objects.filter(
-                job__segment__task=task,
-                job__type=JobType.ANNOTATION,
-            )
+            shapes
             .values("label_id", "label__name")
             .annotate(count=Count("id"))
             .order_by("label__name", "label_id")

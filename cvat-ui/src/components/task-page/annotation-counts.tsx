@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Alert from 'antd/lib/alert';
 import Button from 'antd/lib/button';
+import Input from 'antd/lib/input';
 import Spin from 'antd/lib/spin';
 
 type LabelCount = { label_id: number; label: string; count: number };
@@ -11,12 +12,15 @@ export default function AnnotationCounts({ taskID }: { taskID: number }): JSX.El
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
     const [reload, setReload] = useState(0);
+    const [search, setSearch] = useState('');
+    const [labelFilter, setLabelFilter] = useState('');
 
     useEffect(() => {
         const controller = new AbortController();
         setLoading(true);
         setError('');
-        fetch(`/api/tasks/${taskID}/annotation-counts`, {
+        const query = labelFilter ? `?label=${encodeURIComponent(labelFilter)}` : '';
+        fetch(`/api/tasks/${taskID}/annotation-counts${query}`, {
             credentials: 'same-origin',
             signal: controller.signal,
         }).then(async (response) => {
@@ -30,7 +34,7 @@ export default function AnnotationCounts({ taskID }: { taskID: number }): JSX.El
             if (!controller.signal.aborted) setLoading(false);
         });
         return () => controller.abort();
-    }, [taskID, reload]);
+    }, [taskID, reload, labelFilter]);
 
     const counts = [...(data?.counts || [])].sort((left, right) => right.count - left.count);
     const maxCount = counts[0]?.count || 1;
@@ -41,9 +45,23 @@ export default function AnnotationCounts({ taskID }: { taskID: number }): JSX.El
                 <h2>Annotations by label</h2>
                 <Button onClick={() => setReload((value) => value + 1)}>Refresh</Button>
             </div>
+            <div className='cvat-task-annotation-counts-filter'>
+                <Input
+                    aria-label='Filter labels by name'
+                    placeholder='Filter labels by name'
+                    value={search}
+                    maxLength={80}
+                    onChange={(event) => setSearch(event.target.value)}
+                    onPressEnter={() => setLabelFilter(search.trim())}
+                />
+                <Button onClick={() => setLabelFilter(search.trim())}>Filter</Button>
+                {labelFilter && <Button onClick={() => { setSearch(''); setLabelFilter(''); }}>Clear</Button>}
+            </div>
             {loading && <Spin tip='Loading annotation counts...' />}
             {!loading && error && <Alert type='error' message='Could not load annotation counts' description={error} />}
-            {!loading && !error && data?.total === 0 && <p>No annotations in this task yet.</p>}
+            {!loading && !error && data?.total === 0 && (
+                <p>{labelFilter ? `No annotated labels match "${labelFilter}".` : 'No annotations in this task yet.'}</p>
+            )}
             {!loading && !error && data && data.total > 0 && (
                 <>
                     <p>{data.total.toLocaleString()} stored shapes across {counts.length} labels</p>

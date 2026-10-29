@@ -117,6 +117,14 @@
         h2 { margin: 0; font-size: 20px; }
     }
 
+    .cvat-task-annotation-counts-filter {
+        display: flex;
+        gap: 8px;
+        margin: 12px 0;
+
+        .ant-input { max-width: 300px; }
+    }
+
     .cvat-task-annotation-counts-chart {
         max-height: 360px;
         overflow-y: auto;
